@@ -1,0 +1,42 @@
+<!--&lt;!&ndash; Search Box &ndash;&gt;-->
+<br>
+<br>
+<br>
+<br>
+<br><br><br>
+<div class="search-box clearfix">
+    <div class="container">
+        <div class="search-outer">
+            <div class="search-content">
+                <form method="GET" action="{% url 'search'%}">
+                    <div class="row">
+                        <div class="col-md-8 col-xs-6">
+                            <div class="table_item">
+                                <div class="form-group" style="bottom:23px;">
+                                    <input name="q" type="text" class="form-control" placeholder="Search Now"
+                                           value="{{request.GET.q}}" required>
+                                    <span class="search_btn"><i class="fa fa-search" aria-hidden="true"></i></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="table_item">
+                                <div class="form-group" style="bottom:23px;">
+                                    <input type="submit" class="btn-blue btn-red" value="Search"
+                                           style="padding: 9px 107px;">
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="col-md-3 col-xs-6">-->
+<!--                            <div class="search-ad">-->
+<!--                                <p>With us</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search Box Ends -->

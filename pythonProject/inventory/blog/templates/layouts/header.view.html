@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% if title %}
+        {{title}} | Inventory Management System (I.M.S.)
+        {% else %}
+           I.M.S.
+        {% endif %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="fb:admins" content="Sushan"/>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{title}}|I.M.S.">
+    {% if image %}
+    <meta property="og:image" content="https://I.M.S..com.np{{image}}">
+    <meta property="og:image:secure_url" content="https://IMS.com.np{{image}}">
+    {% endif %}
+    {% if url %}
+    <meta property="og:url" content="{{url}}">
+    {% endif %}
+    <meta property="og:description" content="{{description|striptags|truncatechars:155|safe}}">
+    <meta property="og:site_name" content="I.M.S.">
+    <meta property="og:image:alt" content="I.M.S.[Image]">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'frontend/images/topic.jpg' %}">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'frontend/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <!--Custom CSS-->
+    <link href="{% static 'frontend/css/style.css' %}" rel="stylesheet" type="text/css">
+    <!--Flaticons CSS-->
+    <link href="{% static 'frontend/font/flaticon.css' %}" rel="stylesheet" type="text/css">
+    <!--Plugin CSS-->
+    <link href="{% static 'frontend/css/plugin.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'frontend/css/testimonial.css' %}" rel="stylesheet" type="text/css">
+
+
+    <!--Font Awesome-->
+    <link rel="stylesheet"
+          href="{% static 'frontend/cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/css/popup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+    <!--        <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">-->
+
+</head>
+<body>
+
+<!-- Header -->
+
+
+<!-- Navigation Bar -->
+<div class="navigation"style="background-color:#4863A0">
+    <div class="container">
+        <div class="navigation-content">
+            <div class="header_menu">
+                <!-- start Navbar (Header) -->
+                <nav class="navbar navbar-default navbar-sticky-function navbar-arrow">
+                    <div class="logo pull-left">
+                        <a href="{% url 'index' %}"><img alt="Inventory Logo"
+                                                         src="{% static 'frontend/images/topic.jpg' %}"></a>
+                    </div>
+                    <div id="navbar" class="navbar-nav-wrapper" >
+                        <ul class="nav navbar-nav" id="responsive-menu">
+                            <li class="active">
+                                <a href="{% url 'index' %}" style="color:white;">Home</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'about' %}"  style="color:white;">About us </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'contact' %}" style="color:white;">Contact us </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'destination' %}" style="color:white;"> Products <i class="fa fa-angle-down"></i></a>
+                                <ul>
+                                    {% for destinationcategory in destinationCategory %}
+                                    {% if destinationcategory.destination_set.all %}
+                                    <li>
+                                        <a href="{% url 'descat-details' destinationcategory.slug %}">{{destinationcategory.name}}</a>
+                                        <ul>
+                                            {% for sub in destinationcategory.destination_set.all %}
+                                            <li><a href="{% url 'destination-details' sub.slug %}">{{sub.title}}</a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    {% else %}
+                                    <li><a>{{destinationcategory.name}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'blogz' %}" style="color:white;">Blog </a>
+
+                            </li>
+
+                            <li>
+                                <a href="{% url 'vacancy' %}" style="color:white;">Carrer </a>
+
+                            </li>
+                            <li>
+                                <a href="{% url 'covid19nepal' %}" style="color:white;">Covid 19 </a>
+
+                            </li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                    <br>
+                    <div class="login-btn pull-right">
+
+                    <a href="{% url 'login' %}" style="color:red;"><i class="fa fa-unlock-alt"></i> Login</a>
+
+
+                    </div>
+                </nav>
+                <div id="slicknav-mobile"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Navigation Bar Ends -->
